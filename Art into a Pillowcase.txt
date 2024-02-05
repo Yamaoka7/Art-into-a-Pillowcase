@@ -1,0 +1,13 @@
+from PIL import Image
+
+def create_pillowcase(artwork_path, output_path):
+    artwork = Image.open(artwork_path)
+    pillowcase = Image.new("RGB", (16, 16), "white")  # Adjust size as needed
+
+    artwork.thumbnail(pillowcase.size)
+    pillowcase.paste(artwork, ((pillowcase.width - artwork.width) // 2, (pillowcase.height - artwork.height) // 2))
+
+    pillowcase.save(output_path)
+
+# Example usage:
+create_pillowcase("path/to/kids_artwork.jpg", "path/to/custom_pillowcase.jpg")
